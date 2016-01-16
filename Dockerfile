@@ -57,6 +57,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
   libffi-dev \
   libssl-dev &&\
   pip install virtualenv
+  
+RUN pip install awscli
 
 # Install WAL-E into a virtualenv
 RUN virtualenv /var/lib/postgresql/wal-e &&\
