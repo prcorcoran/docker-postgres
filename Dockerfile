@@ -63,7 +63,7 @@ RUN pip install awscli
 # Install WAL-E into a virtualenv
 RUN virtualenv /var/lib/postgresql/wal-e &&\
   . /var/lib/postgresql/wal-e/bin/activate &&\
-  pip install wal-e &&\
+  pip install wal-e==0.8.1 &&\
   ln -s /var/lib/postgresql/wal-e/bin/wal-e /usr/local/bin/wal-e
 
 # Create directory for storing secret WAL-E environment variables
