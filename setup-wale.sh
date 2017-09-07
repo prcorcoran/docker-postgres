@@ -32,8 +32,9 @@ else
             mkdir -p cron
 	    cat > cron/wal-e << EOL
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-0 2 * * * postgres envdir /etc/wal-e.d/env wal-e backup-push /var/lib/postgresql/9.4/main
-0 3 * * * postgres envdir /etc/wal-e.d/env wal-e delete --confirm retain 7
+0 8 * * * postgres envdir /etc/wal-e.d/env wal-e backup-push /var/lib/postgresql/9.4/main
+30 8 * * * postgres envdir /etc/wal-e.d/env /bin/bash /data/scripts/daily_postgres_backup.sh db_backups
+0 9 * * * postgres envdir /etc/wal-e.d/env wal-e delete --confirm retain 7
 EOL
            sudo chown -R root:postgres cron
         fi
